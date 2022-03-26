@@ -28,9 +28,12 @@ export class StudentGateway
   }
 
   @SubscribeMessage('msgToServer')
-  handleMessage(client: Socket, payload: string): WsResponse<Object> {
+  handleMessage(
+    client: Socket,
+    { data }: { data: Object },
+  ): WsResponse<Object> {
     // equivalent to client.emit('msgToClient',text)
-    console.log('payload', payload);
+    console.log('payload', data);
     return {
       event: 'msgToClient',
       data: {

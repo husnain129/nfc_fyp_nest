@@ -4,7 +4,9 @@ const message = document.getElementById('msg').innerHTML;
 
 const handleMessage = () => {
   console.log('message.value', message);
-  socket.emit('msgToServer', { data: message });
+  socket.emit('msgToServer', {
+    data: { message, id: Math.floor(Math.random() * 100) },
+  });
 };
 
 socket.on('msgToClient', (data) => {
